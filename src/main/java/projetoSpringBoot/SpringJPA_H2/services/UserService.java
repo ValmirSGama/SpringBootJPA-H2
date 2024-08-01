@@ -25,4 +25,9 @@ public class UserService {
 		Optional<User> obj = repository.findById(id);
 		return obj.get();
 	}
+	
+	// EndPoint para inserir um usuário no banco de dados
+	public User insert(User obj) {
+		return repository.save(obj);
+	}
 }
