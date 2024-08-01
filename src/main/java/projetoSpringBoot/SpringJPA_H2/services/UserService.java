@@ -30,4 +30,9 @@ public class UserService {
 	public User insert(User obj) {
 		return repository.save(obj);
 	}
+	
+	// EndPoint para deletar um usuário no banco de dados
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
 }
