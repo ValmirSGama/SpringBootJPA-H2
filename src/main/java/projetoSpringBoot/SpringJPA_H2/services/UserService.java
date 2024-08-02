@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import projetoSpringBoot.SpringJPA_H2.entities.User;
 import projetoSpringBoot.SpringJPA_H2.repositories.UserRepository;
+import projetoSpringBoot.SpringJPA_H2.services.exceptions.ResourceNotFoundException;
 
 @Service // Registra como um componete do spring
 public class UserService {
@@ -23,7 +24,7 @@ public class UserService {
 	// EndPoint para buscar o usuário por ID
 	public User findById(Long id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.get();
+		return obj.orElseThrow(() -> new ResourceNotFoundException(id));
 	}
 	
 	// EndPoint para inserir um usuário no banco de dados
