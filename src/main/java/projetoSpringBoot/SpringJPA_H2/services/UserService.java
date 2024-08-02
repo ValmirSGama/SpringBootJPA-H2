@@ -8,6 +8,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import jakarta.persistence.EntityNotFoundException;
 import projetoSpringBoot.SpringJPA_H2.entities.User;
 import projetoSpringBoot.SpringJPA_H2.repositories.UserRepository;
 import projetoSpringBoot.SpringJPA_H2.services.exceptions.DatabaseException;
@@ -48,9 +49,13 @@ public class UserService {
 	
 	// EndPoint para atualizar um usuário no banco de dados
 	public User update(Long id, User obj) {
-		User entity = repository.getReferenceById(id);
-		updateData(entity, obj);
-		return repository.save(entity);
+		try {
+			User entity = repository.getReferenceById(id);
+			updateData(entity, obj);
+			return repository.save(entity);
+		} catch(EntityNotFoundException e) {
+			throw new ResourceNotFoundException(id);
+		}
 	}
 
 	// Efetivação da atualização dos dados
