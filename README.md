@@ -9,6 +9,11 @@
 
 ### Spring Boot JPA com banco de dados H2
 
+---
+
+**Modelo conceitual**
+![Domain Model](Image/Modelo%20de%20domínio.png)
+
 Esse repositório apresenta uma implementação de uma aplicação web com Spring Boot integrado com JPA (Java Persistence API) e banco de dados H2, demonstrando as melhores práticas no desenvolvimento de aplicativos. Os principais recursos e características deste projeto incluem:
 
 - **Spring Boot Framework**: utiliza Spring Boot para simplificar a configuração e o desenvolvimento do aplicativo.
